@@ -13,3 +13,11 @@ print('total',len(data), 'message','file loaded completed')
 print(data[0]) # print the 1st line
 avg_length = length_sum / len(data) # avarage length of the message
 print('average',avg_length)
+
+#<<<<< filter the list with length >>>>>
+new = []
+for line in data:
+	if len(line) < 100:
+		new.append(line)
+print('total',len(new),' messages with length <100') 
+#print(new[0])
