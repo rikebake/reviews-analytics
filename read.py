@@ -21,3 +21,11 @@ for line in data:
 		new.append(line)
 print('total',len(new),' messages with length <100') 
 #print(new[0])
+
+#<<<< filter the list with "good">>>>
+good = []
+for line in data:
+	if 'good' in line:
+		good.append(line)
+print('total',len(good),'messages with "good"')
+print(good[0])
