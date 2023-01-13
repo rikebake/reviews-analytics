@@ -11,9 +11,47 @@ with open('reviews.txt','r') as file:
 			print(len(data)) # to show the progress but "print" takes resouce so it will take time to read the file
 print('total',len(data), 'message','file loaded completed')
 print(data[0]) # print the 1st line
+
+# count the same word
+wc = {} # word count dictionary 
+print('prcessing ....')
+for line in data:
+	words = line.split(' ')	
+	for word in words:
+		if word not in wc:
+			wc[word] = 1 # new added 
+		else:
+			wc[word] += 1
+'''
+for word in wc:
+	print(word, wc[word])
+'''
+for word in wc:
+	if wc[word] > 1000000:
+		print(word, wc[word])
+print(len(wc))	
+
+#for user to look for word
+while True:
+	word = input('what word are you looking for? (q to quit) ')
+	if word == 'q':
+		print('the end')
+		break
+	elif word not in wc:
+		print('no such word')
+	else:
+		print(word,'comes out for ',wc[word],'times')
+
+
+
+'''
+#<<< get the average length>>>
 avg_length = length_sum / len(data) # avarage length of the message
 print('average',avg_length)
 
+
+
+'''
 #<<<<< filter the list with length >>>>>
 new = []
 for line in data:
@@ -29,3 +67,6 @@ for line in data:
 		good.append(line)
 print('total',len(good),'messages with "good"')
 print(good[0])
+
+#<<<< list comprehension >>>>
+#good = [line for line in data if 'good' in line]
